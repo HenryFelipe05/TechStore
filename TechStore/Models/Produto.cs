@@ -12,34 +12,38 @@ public class Produto
     [Key]
     public int Id { get; set; }
 
-    [Required(ErrorMessage ="Por favor, informe a categoria do produto")]
+    [Required(ErrorMessage = "Por favor, informe a categoria!!")]
     public int CategoriaId { get; set; }
-    
+
     [ForeignKey("CategoriaId")]
-    public Categoria Categoria { get; set; }
-    
-    [Required(ErrorMessage ="Por favor, insira o nome")]
-    [StringLength(60, ErrorMessage ="O nome deve conter no máximo 60 caracteres")]
+    public Categoria categoria { get; set; }
+
+    [Required(ErrorMessage = "Por favor, informe o Nome")]
+    [StringLength(60, ErrorMessage = "O nome deve possuir no maximo 60 caracteres")]
     public string Nome { get; set; }
-    
-    [Display(Name = "Descrição", Prompt ="Descrição")]
-    [StringLength(1000, ErrorMessage ="A descrição deve conter no máximo 1000 caracteres")]
+
+    [Display(Name = "Descrição")]
+    [StringLength(1000, ErrorMessage = "A descrição deve possuir no maximo 1000 caracteres")]
     public string Descricao { get; set; }
-    
-    [Display(Name ="Quantidade em estoque")]
-    [Required(ErrorMessage = "Por favor, indique a quantidade em estoque")]
+
+    [Required(ErrorMessage = "Por favor, informe a quantidade em estoque")]
     [Range(0, int.MaxValue)]
-    public int QtdEstoque { get; set; }
-    
-    [Display(Name ="Valor de Custo")]
+    [Display(Name = "Quantidade em Estoque")]
+    public int QtdeEstoque { get; set; }
+
+    [Required(ErrorMessage = "Defina o valor do custo")]
+    [Display(Name = "Valor de Custo")]
     [Range(0, double.MaxValue)]
-    [Required(ErrorMessage ="Insira o valor de custo")]
-    [Column(TypeName ="decimal(10.2)")]
+    [Column(TypeName = "decimal(10,2)")]
     public decimal ValorCusto { get; set; }
 
-    [Display(Name ="Valor de Venda")]
+    [Required(ErrorMessage = "Defina o valor de venda")]
+    [Display(Name = "Valor de Venda")]
     [Range(0, double.MaxValue)]
-    [Required(ErrorMessage ="Insira o valor de Venda")]
-    [Column(TypeName ="decimal(10.2)")]
+    [Column(TypeName = "decimal(10,2)")]
     public decimal ValorVenda { get; set; }
+
+    public bool Destaque { get; set; } = false;
+
+    public List<ProdutoFoto> Fotos { get; set; }
 }

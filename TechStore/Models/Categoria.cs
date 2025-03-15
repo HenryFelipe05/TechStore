@@ -11,7 +11,7 @@ namespace TechStore.Models
 
         [Required(ErrorMessage = "Por favor, informe o nome da categoria")]
         [StringLength(50)]
-        public string Nome { get; set; }
+        public string Name { get; set; }
 
         [StringLength(200)]
         public string Foto { get; set; }
